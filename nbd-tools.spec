@@ -12,6 +12,8 @@ Source1:	http://www.image.dk/~ehcorry/linux/nbd.swap-patch.123-erik-2.2.13pre17
 Source2:	nbd.README
 Patch0:		ndb-debug.patch
 URL:		http://atrey.karlin.mff.cuni.cz/~pavel/nbd/nbd.html
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,11 +27,20 @@ If you have a kernel patched for it, you can use the network block
 device to swap over the net, which is particularly useful for diskless
 workstations.
 
+%description -l pl
+nbd-tools to narzêdzia potrzebne do wyeksportowania i u¿ywania
+sieciowego urz±dzenia blokowego (Network Block Device). Modu³ do nbd
+jest w j±drze 2.2 i pó¼niejszych.
+
+Je¿eli masz kernel z odpowiedni± ³at±, mo¿esz u¿ywaæ sieciowego
+urz±dzenia blokowego do swapowania przez sieæ - jest to przydatne w
+przypadku stacji bezdyskowych.
+
 %prep
 %setup -q -n nbd
 %patch0 -p0
-cp %{SOURCE1} .
-cp %{SOURCE2} .
+cp -f %{SOURCE1} .
+cp -f %{SOURCE2} .
 
 %build
 aclocal
@@ -44,21 +55,13 @@ install -d $RPM_BUILD_ROOT{/sbin,%{_sbindir}}
 install nbd-client $RPM_BUILD_ROOT/sbin/
 install nbd-server $RPM_BUILD_ROOT%{_sbindir}/
 
+gzip -9nf nbd.README
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc nbd.README nbd.swap-patch.123-erik-2.2.13pre17 nbd.20.diff nbd.swap-patch.23
+%doc nbd.README.gz nbd.swap-patch.123-erik-2.2.13pre17 nbd.20.diff nbd.swap-patch.23
 %attr(755,root,root) /sbin/nbd-client
 %attr(755,root,root) %{_sbindir}/nbd-server
-
-%post
-umask 177
-if [ ! -b /dev/nb0 ]; then
-    minor=0
-    while [ "$minor" -ne 128 ]; do
-	mknod "/dev/nb$minor" b 43 $minor
-	minor=$(($minor + 1))
-    done
-fi
