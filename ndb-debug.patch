@@ -1,0 +1,16 @@
+--- nbd-server.c	Sun Jun  6 08:31:43 1999
++++ nbd-server.c.erik	Mon Nov  1 13:51:00 1999
+@@ -36,9 +36,12 @@
+ #include <sys/mount.h>		/* For BLKGETSIZE */
+ 
+ 
++#ifdef DODBG
+ #define DODBG
+ #define DEBUG( a ) printf( a )
+-//#define DEBUG( a )
++#else
++#define DEBUG( a )
++#endif
+ 
+ #ifdef HAVE_LLSEEK
+ extern long long llseek(unsigned int, long long, unsigned int);
