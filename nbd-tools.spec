@@ -53,13 +53,11 @@ install -d $RPM_BUILD_ROOT{/sbin,%{_sbindir}}
 install nbd-client $RPM_BUILD_ROOT/sbin/
 install nbd-server $RPM_BUILD_ROOT%{_sbindir}/
 
-gzip -9nf nbd.README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc nbd.README.gz nbd.swap-patch.123-erik-2.2.13pre17 nbd.20.diff nbd.swap-patch.23
+%doc nbd.README nbd.swap-patch.123-erik-2.2.13pre17 nbd.20.diff nbd.swap-patch.23
 %attr(755,root,root) /sbin/nbd-client
 %attr(755,root,root) %{_sbindir}/nbd-server
