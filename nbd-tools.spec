@@ -1,8 +1,9 @@
 Summary:	Tools for using the Network Block Device
+Summary(pl):	Narzêdzia do u¿ywania Network Block Device
 Name:		nbd-tools
 Version:	1.3
 License:	GPL
-Release:	1
+Release:	2
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
@@ -31,7 +32,9 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 
 %build
-%configure2_13
+aclocal
+autoconf
+%configure
 %{__make}
 
 %install
