@@ -41,7 +41,7 @@ cp -f %{SOURCE1} .
 cp -f %{SOURCE2} .
 
 %build
-aclocal
+%{__aclocal}
 %{__autoconf}
 %configure
 %{__make}
