@@ -1,0 +1,16 @@
+See the nbd homepage on http://atrey.karlin.mff.cuni.cz/~pavel/nbd/nbd.html
+
+If you have a kernel near 2.2 and you want to swap over the net,
+you may be able to use the kernel patch in
+/usr/doc/nbd-tools-xxx/nbd.swap-patch.123-erik-2.2.13pre17
+
+If you have a kernel in the 2.3 series done near 2.2.23 then you may
+find /usr/doc/nbd-tools-xxx/nbd.swap-patch.23 will work for you
+
+Neither of these patches are very well tested, but they are probably
+both better than nothing.  If you try to swap over net without one of
+these patches, then you will get lockups!
+
+For kernels around 2.0.36 try the /usr/doc/nbd-tools-xxx/nbd.20.diff
+patch.  This is just for basic nbd support.  Do not try to use this
+to swap over net, as you will get lockups!
