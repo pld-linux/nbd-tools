@@ -42,7 +42,7 @@ cp -f %{SOURCE2} .
 
 %build
 aclocal
-autoconf
+%{__autoconf}
 %configure
 %{__make}
 
