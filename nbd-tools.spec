@@ -6,7 +6,9 @@ License:	GPL
 Release:	2
 Group:		Applications/System
 Source0:	http://atrey.karlin.mff.cuni.cz/~pavel/nbd/nbd.14.tar.gz
+# Source0-md5:	a049cf102d0649caaeb50cb45fae85a4
 Source1:	http://www.image.dk/~ehcorry/linux/nbd.swap-patch.123-erik-2.2.13pre17
+# Source1-md5:	815be78740314e83cd892f6d0a8e6111
 Source2:	nbd.README
 Patch0:		ndb-debug.patch
 URL:		http://atrey.karlin.mff.cuni.cz/~pavel/nbd/nbd.html
