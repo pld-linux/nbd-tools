@@ -31,7 +31,7 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 
 %build
-%configure
+%configure2_13
 %{__make}
 
 %install
